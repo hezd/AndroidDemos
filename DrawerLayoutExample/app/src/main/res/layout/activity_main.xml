@@ -16,8 +16,10 @@
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:background="@color/colorPrimary"
-            toolbar:navigationIcon="@mipmap/ic_launcher"
             android:layout_width="match_parent"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            android:transitionName="actionBar"
+            toolbar:popupTheme="@style/ThemeOverlay.AppCompat.Light"
             android:layout_height="?attr/actionBarSize" />
         <TextView
             android:gravity="center"

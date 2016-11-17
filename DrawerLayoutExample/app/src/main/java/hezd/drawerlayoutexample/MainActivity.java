@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void setViews() {
         setSupportActionBar(mToolBar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     private void setListeners() {
