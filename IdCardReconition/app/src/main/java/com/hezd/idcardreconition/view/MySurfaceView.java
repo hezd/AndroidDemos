@@ -35,12 +35,6 @@ public class MySurfaceView extends SurfaceView implements SurfaceHolder.Callback
             mCamera.setPreviewDisplay(holder);
             initCamera();
             mCamera.startPreview();
-//            mCamera.autoFocus(new Camera.AutoFocusCallback() {
-//                @Override
-//                public void onAutoFocus(boolean success, Camera camera) {
-//                    Log.d("hezd","onAutoFocus");
-//                }
-//            });
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -64,32 +58,6 @@ public class MySurfaceView extends SurfaceView implements SurfaceHolder.Callback
     @Override
     public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
         Log.d("hezd","surfaceChanged");
-        autoFocus();
-    }
-
-    private void autoFocus() {
-//        new Thread(){
-//            @Override
-//            public void run() {
-//                try {
-//                    Thread.sleep(100);
-//                    if(mCamera==null)
-//                        return;
-//                    mCamera.autoFocus(new Camera.AutoFocusCallback() {
-//                        @Override
-//                        public void onAutoFocus(boolean success, Camera camera) {
-//                            Log.d("hezd","onAutofocus");
-//                            if(success) {
-//                                initCamera();
-////                                mCamera.startPreview();
-//                            }
-//                        }
-//                    });
-//                } catch (InterruptedException e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//        };
     }
 
     @Override

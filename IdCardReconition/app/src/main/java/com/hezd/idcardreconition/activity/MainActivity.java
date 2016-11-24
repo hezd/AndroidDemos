@@ -112,9 +112,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             return;
         }
         MySurfaceView mySurfaceView = new MySurfaceView(this,mCameraInst);
-        mySurfaceView.setFocusable(true);
-        mySurfaceView.setBackgroundColor(TRIM_MEMORY_BACKGROUND);
-        mySurfaceView.getHolder().setKeepScreenOn(true);
+//        mySurfaceView.setFocusable(true);
+//        mySurfaceView.setBackgroundColor(TRIM_MEMORY_BACKGROUND);
+//        mySurfaceView.getHolder().setKeepScreenOn(true);
         mSurfaceViewContainer.addView(mySurfaceView);
     }
 
