@@ -3,6 +3,8 @@ package com.hezd.idcardreconition.activity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.hardware.Camera;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,6 +16,9 @@ import android.widget.Toast;
 
 import com.hezd.idcardreconition.R;
 import com.hezd.idcardreconition.view.MySurfaceView;
+
+import java.io.IOException;
+import java.io.InputStream;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -55,11 +60,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+//        testImage();
         initCamera();
         getViews();
         setViews();
         setListeners();
 
+    }
+
+    private void testImage() {
+        BitmapFactory.Options options = new BitmapFactory.Options();
+//        options.inJustDecodeBounds = true;
+        Bitmap home = BitmapFactory.decodeResource(getResources(),R.mipmap.home,options);
     }
 
     private void initCamera() {

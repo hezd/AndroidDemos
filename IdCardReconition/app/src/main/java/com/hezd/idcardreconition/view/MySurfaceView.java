@@ -46,7 +46,7 @@ public class MySurfaceView extends SurfaceView implements SurfaceHolder.Callback
         if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
             parameters.setFocusMode(Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE);
         }else {
-            parameters.setFocusMode(Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE);
+            parameters.setFocusMode(Camera.Parameters.FOCUS_MODE_AUTO);
         }
 
 //        mCamera.setDisplayOrientation(90);
