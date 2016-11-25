@@ -126,10 +126,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 BitmapFactory.decodeByteArray(data,0,data.length,options);
                 options.inJustDecodeBounds = false;
 
-//                int sampleSize = (int)((float)outHeight/mScanHeight);
-//                options.inSampleSize = sampleSize;
-//                options.inPreferredConfig = Bitmap.Config.ARGB_8888;
-
                 Rect rect = new Rect(mScaLeft,mScanTop,mScanRight,mScanBottom);
                 try {
                     BitmapRegionDecoder decoder = BitmapRegionDecoder.newInstance(data,0,data.length,false);
