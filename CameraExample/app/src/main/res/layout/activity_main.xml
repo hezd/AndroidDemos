@@ -18,9 +18,9 @@
             android:layout_width="match_parent"
             android:layout_height="10dp"/>
         <View
-        android:background="@android:color/darker_gray"
-        android:layout_width="10dp"
-        android:layout_height="match_parent"/>
+            android:background="@android:color/darker_gray"
+            android:layout_width="10dp"
+            android:layout_height="match_parent"/>
         <View
             android:layout_alignParentRight="true"
             android:background="@android:color/darker_gray"
@@ -46,12 +46,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <Button
+                android:layout_marginLeft="20dp"
                 android:text="拍照"
                 android:layout_marginTop="10dp"
-                android:layout_centerHorizontal="true"
                 android:id="@+id/btn_take_pic"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
+
         </RelativeLayout>
         <ImageView
             android:id="@+id/iv_pic"
@@ -60,8 +61,27 @@
             android:layout_marginRight="10dp"
             android:layout_below="@+id/rl_take"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="200dp" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/iv_pic"
+            android:background="@android:color/darker_gray"
+            />
     </RelativeLayout>
-
+    <ImageView
+        android:visibility="gone"
+        android:id="@+id/iv_show_pic"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+    <Button
+        android:text="大图开关"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
+        android:id="@+id/btn_show"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
 </RelativeLayout>

@@ -6,8 +6,10 @@ import android.os.Build;
 import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.view.WindowManager;
 
 import java.io.IOException;
+import java.util.List;
 
 /**
  * Created by hezd on 2016/11/25.
@@ -15,11 +17,13 @@ import java.io.IOException;
 
 public class CameraSurfaceView extends SurfaceView implements SurfaceHolder.Callback {
     private static final String TAG = CameraSurfaceView.class.getSimpleName();
+    private final Context mContext;
     private Camera mCameraInst;
     private SurfaceHolder mHolder;
 
     public CameraSurfaceView(Context context, Camera camera) {
         super(context);
+        this.mContext = context;
         this.mCameraInst = camera;
         mHolder = getHolder();
         mHolder.addCallback(this);
@@ -50,6 +54,24 @@ public class CameraSurfaceView extends SurfaceView implements SurfaceHolder.Call
         }else {
             parameters.setFocusMode(Camera.Parameters.FOCUS_MODE_AUTO);
         }
+
+        WindowManager windowManager = (WindowManager) mContext.getSystemService(Context.WINDOW_SERVICE);
+        int width = windowManager.getDefaultDisplay().getWidth();
+        int height = windowManager.getDefaultDisplay().getHeight();
+        List<Camera.Size> supportedPreviewSizes = parameters.getSupportedPreviewSizes();
+        int diff = Integer.MAX_VALUE;
+        Camera.Size best = null;
+        for(Camera.Size size : supportedPreviewSizes) {
+            int currentDif = Math.abs(size.width-width)+Math.abs(size.height-height);
+            if(currentDif<diff) {
+                best = size;
+                diff = currentDif;
+            }
+        }
+        if(best!=null) {
+            parameters.setPreviewSize(best.width,best.height);
+        }
+
         mCameraInst.setDisplayOrientation(90);// 竖屏
         mCameraInst.setParameters(parameters);
     }

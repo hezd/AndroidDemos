@@ -20,6 +20,7 @@ import android.widget.Toast;
 import com.hezd.example.camera.R;
 import com.hezd.example.camera.view.CameraSurfaceView;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -38,6 +39,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private int mScanWidth;
     private int mScanHeight;
     private ImageView mPicIv;
+    private FrameLayout mSurfaceContainerFl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,14 +52,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void getViews() {
-        FrameLayout surfaceContainerFl = (FrameLayout) findViewById(R.id.fl_surfaceview_container);
+        mSurfaceContainerFl = (FrameLayout) findViewById(R.id.fl_surfaceview_container);
         mPicIv = (ImageView) findViewById(R.id.iv_pic);
         mScanRl = (RelativeLayout) findViewById(R.id.rl_scan);
         mScanV = findViewById(R.id.v_scan);
         mTakePicBtn = (Button) findViewById(R.id.btn_take_pic);
         mCameraInstance = getCameraInstance();
         CameraSurfaceView mSurfaceView = new CameraSurfaceView(this, mCameraInstance);
-        surfaceContainerFl.addView(mSurfaceView);
+        mSurfaceContainerFl.addView(mSurfaceView);
     }
 
     private Camera getCameraInstance() {
@@ -114,34 +116,56 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void takePic() {
 
-        mCameraInstance.takePicture(null, null, new Camera.PictureCallback() {
+        mCameraInstance.takePicture(null, null,  new Camera.PictureCallback() {
             @Override
             public void onPictureTaken(byte[] data, Camera camera) {
 //                Bitmap bitmap = BitmapFactory.decodeByteArray(data, 0, data.length);
                 /**
-                 * 图片截取的原理，我们预览surfaceview是全屏的，扫描区域是屏幕中的一部分
+                 * 图片截取的原理，我们预览surfaceview是全屏的，扫描区域是屏幕中的一部分.所以最终
+                 * 需要截取图片，但是有一些需要注意的问题。
+                 * 因为拍照图片尺寸跟扫描框父窗体尺寸是不一样的
+                 * 要先缩放照片尺寸与扫描框父窗体一样在进行裁剪
+                 * 另外还有一个问题，一定要设置预览分辨率否则拍摄照片是变形的。
+                 * 预览的坐标是横屏的xy轴坐标，所以如果是竖屏对图片处理时需要先做旋转操作
+                 * 分辨率设置方法是获取设备支持的预览分辨率利用最小差值法获取最优分辨率并设置
+                 * 还有一种解决办法有人说是是设置拍照图片分辨率和预览分辨率，我没有尝试。
                  * */
                 BitmapFactory.Options options = new BitmapFactory.Options();
                 options.inJustDecodeBounds = true;
                 BitmapFactory.decodeByteArray(data,0,data.length,options);
                 options.inJustDecodeBounds = false;
 
-                Rect rect = new Rect(mScaLeft,mScanTop,mScanRight,mScanBottom);
                 try {
-                    BitmapRegionDecoder decoder = BitmapRegionDecoder.newInstance(data,0,data.length,false);
+                    int outWidth = options.outWidth;
+                    int outHeight = options.outHeight;
+                    int count = outHeight+outWidth;
+                    int bitmapW = outWidth<outHeight?outWidth:outHeight;
+                    int bitmapH = count-bitmapW;
+                    float difW = (float)mSurfaceContainerFl.getWidth()/bitmapW;
+                    float difH = (float)mSurfaceContainerFl.getHeight()/bitmapH;
+
+
+                    Matrix matrix = new Matrix();
+                    matrix.postRotate(90);
+                    matrix.postScale(difW,difH);
+
+                    Bitmap bitmap = BitmapFactory.decodeByteArray(data, 0, data.length);
+                    Bitmap scaleBitmap = Bitmap.createBitmap(bitmap,0,0,bitmap.getWidth(),bitmap.getHeight(),matrix,true);
+
+                    // 图片截取两种方式，createbitmap或者bitmapRegionDecoder
+                    ByteArrayOutputStream bos = new ByteArrayOutputStream();
+                    scaleBitmap.compress(Bitmap.CompressFormat.JPEG,100,bos);
+                    Rect rect = new Rect(mScaLeft,mScanTop,mScanRight,mScanBottom);
+                    byte[] bitmapBytes = bos.toByteArray();
+                    BitmapRegionDecoder decoder = BitmapRegionDecoder.newInstance(bitmapBytes,0,bitmapBytes.length,false);
                     Bitmap cropBtimap = decoder.decodeRegion(rect, options);
-                    // 现在图片拍摄以后是横着稍后处理
-//                    Matrix matrix = new Matrix();
-//                    matrix.setRotate(90,mScanWidth/2,mScanHeight/2);
-//                    Bitmap realBitmap = Bitmap.createBitmap(cropBtimap,0,0,mScanWidth,mScanHeight,matrix,true);
-//                    if(cropBtimap!=null&&!cropBtimap.isRecycled()) {
-//                        cropBtimap.recycle();
-//                    }
+
+
                     mPicIv.setImageBitmap(cropBtimap);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                mCameraInstance.startPreview();
+//                mCameraInstance.startPreview();
 
             }
         });
