@@ -1,5 +1,6 @@
 package com.hezd.mvpexample.presenter;
 
+import android.app.DownloadManager;
 import android.content.Context;
 
 import com.hezd.mvpexample.activity.IBaseView;
@@ -36,6 +37,7 @@ public class LoginPresenter extends BasePresenter<IBaseView> {
                 }
             }
         }.start();
+        DownloadManager
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)

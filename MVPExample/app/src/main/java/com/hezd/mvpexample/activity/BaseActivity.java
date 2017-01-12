@@ -41,13 +41,14 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
 
     @Override
     public void initViews() {
-        mParentLayout = (FrameLayout) findViewById(R.id.fl_content);
+        mParentLayout = (FrameLayout) findViewById(R.id.fl_parent);
         mLoadingPb = (ProgressBar) findViewById(R.id.pb_loading);
     }
 
     @Override
     public void setContentLayout(int resId) {
-        View.inflate(this,resId,mParentLayout);
+        View childView = View.inflate(this, resId, null);
+        mParentLayout.addView(childView,0);
         getViews();
         bindData();
         setListeners();
