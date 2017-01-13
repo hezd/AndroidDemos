@@ -1,4 +1,7 @@
 最简单的方式实现android侧滑拦<br>
+https://github.com/dreamkid/AndroidDemos/blob/master/NavigationDrawer/exampleMedia/BSEDTW6UIEX%24%5B%25CSH%7D3(%25(V.png
+https://github.com/dreamkid/AndroidDemos/blob/master/NavigationDrawer/exampleMedia/E%7DSQ)G6KCP%7DA%25%5BVNRQUMRKA.png
+
 顺便加上了TabLayout+viewPager横向切换页面和顶部tab联动<br>
 实现方式<br>
 1.Drawerlayout+NavigationView<br>
@@ -14,3 +17,5 @@
     ，ActionBarDrawerToggle通过syncState状态同步协调两者状态<br>
 4.关闭打开drawerlayout就很简单了，自己看代码吧
 
+
+https://github.com/dreamkid/AndroidDemos/blob/master/NavigationDrawer/exampleMedia/drawer.gif
