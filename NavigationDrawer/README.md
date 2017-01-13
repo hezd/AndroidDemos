@@ -1,5 +1,5 @@
 最简单的方式实现android侧滑拦<br>
- ![img_url](https://github.com/dreamkid/AndroidDemos/blob/master/NavigationDrawer/exampleMedia/BSEDTW6UIEX%24%5B%25CSH%7D3(%25(V.png)<br>
+ ![img_url](https://github.com/dreamkid/AndroidDemos/blob/master/NavigationDrawer/exampleMedia/BSEDTW6UIEX%24%5B%25CSH%7D3(%25(V.png)
  ![img_url](https://github.com/dreamkid/AndroidDemos/blob/master/NavigationDrawer/exampleMedia/E%7DSQ)G6KCP%7DA%25%5BVNRQUMRKA.png)
 
 
