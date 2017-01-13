@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <!--菜单项-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/iv_menu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginBottom="20dp"
+                android:layout_marginRight="10dp"
+                android:src="@mipmap/ic_launcher" />
+        </RelativeLayout>
+
+        <!--我的收藏-->
+        <RelativeLayout
+            android:id="@+id/rl_my_collection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                style="@style/NavigationTextSytle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="我的收藏" />
+
+            <ImageView
+                style="@style/NavigationIconSytle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ic_launcher" />
+        </RelativeLayout>
+
+        <include layout="@layout/divider_line" />
+        <!--意见反馈-->
+        <RelativeLayout
+            android:id="@+id/rl_feedback"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                style="@style/NavigationTextSytle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="意见反馈" />
+
+            <ImageView
+                style="@style/NavigationIconSytle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ic_launcher" />
+        </RelativeLayout>
+
+        <include layout="@layout/divider_line" />
+        <!--清除缓存-->
+        <RelativeLayout
+            android:id="@+id/rl_clear_cache"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                style="@style/NavigationTextSytle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="清除缓存" />
+
+            <ImageView
+                android:id="@+id/iv_arrow"
+                style="@style/NavigationIconSytle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ic_launcher" />
+            <TextView
+                android:layout_toLeftOf="@id/iv_arrow"
+                style="@style/NavigationTextSytle"
+                android:text="20.9M"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+
+        <include layout="@layout/divider_line" />
+        <!--帮助-->
+        <RelativeLayout
+            android:id="@+id/rl_help"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                style="@style/NavigationTextSytle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="帮助" />
+
+            <ImageView
+                style="@style/NavigationIconSytle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ic_launcher" />
+        </RelativeLayout>
+
+        <include layout="@layout/divider_line" />
+        <!--检查更新-->
+        <RelativeLayout
+            android:id="@+id/rl_checkup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                style="@style/NavigationTextSytle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="检查更新" />
+
+            <ImageView
+                style="@style/NavigationIconSytle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ic_launcher" />
+        </RelativeLayout>
+
+
+    </LinearLayout>
+</ScrollView>
