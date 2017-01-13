@@ -1,4 +1,4 @@
-最简单的方式实现android侧滑拦<br>
+最简单的方式实现android侧滑拦
  ![image](https://github.com/dreamkid/AndroidDemos/blob/master/NavigationDrawer/exampleMedia/BSEDTW6UIEX%24%5B%25CSH%7D3(%25(V.png)
 
 顺便加上了TabLayout+viewPager横向切换页面和顶部tab联动<br>
