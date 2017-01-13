@@ -1,9 +1,15 @@
+<<<<<<< HEAD
 最简单的方式实现android侧滑拦<br>
  ![img_url](https://github.com/dreamkid/AndroidDemos/blob/master/NavigationDrawer/exampleMedia/BSEDTW6UIEX%24%5B%25CSH%7D3(%25(V.png)
  ![img_url](https://github.com/dreamkid/AndroidDemos/blob/master/NavigationDrawer/exampleMedia/E%7DSQ)G6KCP%7DA%25%5BVNRQUMRKA.png)
 
+=======
+最简单的方式实现android侧滑拦
+ ![image](https://github.com/dreamkid/AndroidDemos/blob/master/NavigationDrawer/exampleMedia/BSEDTW6UIEX%24%5B%25CSH%7D3(%25(V.png)
+>>>>>>> 9ba79e597122e40b1361b175bd8db175a2e3b83b
 
 顺便加上了TabLayout+viewPager横向切换页面和顶部tab联动<br>
+ ![image](https://github.com/dreamkid/AndroidDemos/blob/master/NavigationDrawer/exampleMedia/E%7DSQ)G6KCP%7DA%25%5BVNRQUMRKA.png)
 实现方式<br>
 1.Drawerlayout+NavigationView<br>
     问题是NavigationView作为菜单局限比较大，无法定制菜单item布局<br>
