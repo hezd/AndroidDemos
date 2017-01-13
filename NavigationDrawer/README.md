@@ -4,7 +4,7 @@
 
 
 顺便加上了TabLayout+viewPager横向切换页面和顶部tab联动<br>
- ![image](https://github.com/dreamkid/AndroidDemos/blob/master/NavigationDrawer/exampleMedia/E%7DSQ)G6KCP%7DA%25%5BVNRQUMRKA.png)
+ ![image](https://github.com/dreamkid/AndroidDemos/blob/master/NavigationDrawer/exampleMedia/E%7DSQ)G6KCP%7DA%25%5BVNRQUMRKA.png])
 实现方式<br>
 1.Drawerlayout+NavigationView<br>
     问题是NavigationView作为菜单局限比较大，无法定制菜单item布局<br>
